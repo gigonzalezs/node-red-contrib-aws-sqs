@@ -1,0 +1,49 @@
+{
+  "_from": "node-red-contrib-aws-sqs@0.0.4",
+  "_id": "node-red-contrib-aws-sqs@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-lW0xNFcoZu8JiDrY2xOVmpSRGik=",
+  "_location": "/node-red-contrib-aws-sqs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "node-red-contrib-aws-sqs@0.0.4",
+    "name": "node-red-contrib-aws-sqs",
+    "escapedName": "node-red-contrib-aws-sqs",
+    "rawSpec": "0.0.4",
+    "saveSpec": null,
+    "fetchSpec": "0.0.4"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-aws-sqs/-/node-red-contrib-aws-sqs-0.0.4.tgz",
+  "_shasum": "956d3134572866ef09883ad8db13959a94911a29",
+  "_spec": "node-red-contrib-aws-sqs@0.0.4",
+  "_where": "/home/gilbert/.node-red",
+  "author": {
+    "name": "Gilbert Gonzalez",
+    "email": "g.gonzalezsotillo@gmail.com"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "aws-sdk": "2.896.0"
+  },
+  "deprecated": false,
+  "description": "node-red nodes to send and receive using Amazon SQS",
+  "keywords": [
+    "node-red",
+    "AWS",
+    "SQS"
+  ],
+  "license": "Apache-2.0",
+  "name": "node-red-contrib-aws-sqs",
+  "node-red": {
+    "nodes": {
+      "aws-sqs": "awsSQS.js"
+    }
+  },
+  "version": "0.0.4"
+}

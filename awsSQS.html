@@ -1,0 +1,106 @@
+<!--
+  Copyright 2014, 2015, 2016, 2021 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="sqs out">
+    <div class="form-row">
+        <label for="node-input-groupId"><i class="fa fa-bookmark"></i> Message Group Id</label>
+        <input class="input-append-left" type="text" id="node-input-groupId" placeholder="sales">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-bookmark"></i> Queue URL</label>
+        <input class="input-append-left" type="text" id="node-input-url" placeholder="http://sqs.us-east-1.amazonaws.com/accc/qqqq">
+    </div>
+    <div class="form-row node-input-payonly">
+        <label>&nbsp;</label>
+        <input type="checkbox" id="node-input-payonly" placeholder="Only"
+               style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-payonly" style="width:65%;">Only store msg.payload object?</label>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name" style="width:65%;">
+    </div>
+</script>
+
+<script type="text/x-red" data-template-name="sqs in">
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-bookmark"></i> Queue URL</label>
+        <input class="input-append-left" type="text" id="node-input-url" placeholder="http://sqs.us-east-1.amazonaws.com/accc/qqqq">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name" style="width:65%;">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("sqs out", {
+        category: "output",
+        color: "rgb(114, 199, 231)",
+        defaults: {
+            name: { value: "" },
+            groupId: { value:"", required:false },
+            url: { value:"", required:true },
+            payonly: { value:false },
+        },
+        inputs: 1,
+        outputs: 1,
+        align: "right",
+        label: label,
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+       });
+
+    RED.nodes.registerType("sqs in", {
+        category: "input",
+        color: "rgb(114, 199, 231)",
+        defaults: {
+            name    : { value:"" },
+            url : { value:"", required:true }
+        },
+        inputs : 0,
+        outputs: 1,
+        label  : label,
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+
+
+    function label() {
+        return this.name ||  "sqs";
+    }
+
+</script>
+
+<script type="text/x-red" data-help-name="sqs in">
+    <p>This node reads incoming messages from an Amazon SQS queue and sends on for processing</p></br>
+	
+	</br>
+</p>
+	
+</script>
+<script type="text/x-red" data-help-name="sqs out">
+    <p>This node writes a message to an Amazon SQS queue </p></br>
+	<p>If sent is success, return SQS send result in msg.payload.</p></br>
+    <p>If sent fails, return Error Object in msg.error.</p></br>
+    <p>For FIFO Queues you can specify MessageGroupId using configuration or msg.MessageGroupId.</p></br>
+    <p>NOTE: using msg.MessageGroupId overrides any configured groupId.</p></br>
+	</br>
+</p>
+	
+</script>
