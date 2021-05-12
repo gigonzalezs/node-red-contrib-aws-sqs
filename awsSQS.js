@@ -58,6 +58,7 @@
                     node.log('error'); 
                     node.error(err); // an error occurred
                 } else {
+                    msg.sent = msg.payload;
                     msg.payload = data;
                     node.log('success');           // successful response
                 }
